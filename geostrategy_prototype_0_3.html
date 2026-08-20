@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Geostrategy Prototype 0.3</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#edf2f7;background:#0e141b}
+*{box-sizing:border-box}body{margin:0}.app{max-width:1100px;margin:auto;padding:14px}
+a{color:inherit;text-decoration:none}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.title{font-size:22px;font-weight:700}.muted{color:#9aa8b6;font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.card,.panel{background:#171f29;border:1px solid #2c3947;border-radius:14px;padding:12px}.card b{display:block;font-size:19px;margin-top:4px}
+.nav{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.btn{display:inline-block;padding:9px 12px;border-radius:9px;border:1px solid #3a4a5a;background:#202d3a}
+.map{height:480px;position:relative;overflow:hidden;border-radius:15px;border:1px solid #394958;background:linear-gradient(145deg,#18354d 0 39%,#30472f 39% 100%)}
+.land{position:absolute;background:#43583b99;border:1px solid #71806c;color:#fff;text-align:center;font-size:13px;font-weight:600;padding-top:15px}
+.greece{left:41%;top:49%;width:15%;height:28%;clip-path:polygon(30% 0,68% 8%,92% 30%,65% 48%,80% 70%,54% 100%,23% 82%,0 51%,14% 21%)}
+.turkey{left:53%;top:44%;width:29%;height:17%;clip-path:polygon(0 28%,18% 10%,41% 18%,65% 4%,100% 22%,94% 72%,60% 86%,28% 70%,8% 78%)}
+.bulgaria{left:45%;top:36%;width:13%;height:11%}.italy{left:29%;top:34%;width:11%;height:29%;clip-path:polygon(30% 0,75% 20%,58% 48%,95% 67%,55% 100%,18% 72%,38% 45%,0 28%)}
+.city{position:absolute;width:14px;height:14px;border-radius:50%;background:#f3d36a;border:2px solid #0e141b}.label{position:absolute;font-size:12px;font-weight:600;text-shadow:0 1px 4px #000}
+.athens{left:47%;top:69%}.thess{left:47%;top:55%}.istanbul{left:62%;top:51%}.sofia{left:49%;top:41%}.rome{left:33%;top:48%}
+.view{display:none}.view:target{display:block}.default{display:block}.view:target~.default{display:none}
+.scene{height:390px;position:relative;overflow:hidden;border-radius:14px;border:1px solid #3b4a58;background:linear-gradient(#182c3e 0 48%,#354930 48% 100%)}
+.road{position:absolute;left:-10%;top:58%;width:120%;height:30px;background:#262d34;transform:rotate(-7deg)}
+.build{position:absolute;width:78px;height:64px;background:#1c2832;border:1px solid #4b5d6e;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:29px}.build small{position:absolute;top:67px;white-space:nowrap;font-size:11px}
+.list{display:grid;gap:8px;margin-top:10px}.row{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#111820;border:1px solid #293744;border-radius:10px;padding:10px}
+.notice{margin-top:10px;background:#202d3a;border-radius:10px;padding:10px;color:#cbd6df}
+@media(max-width:650px){.cards{grid-template-columns:repeat(2,1fr)}.map{height:400px}.scene{height:330px}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="top"><div><div class="muted">SERVER 001 · EUROPE & EASTERN MEDITERRANEAN</div><div class="title">🌍 Geostrategy — Prototype 0.3</div></div><div class="muted">Day 1 · 09:42</div></div>
+
+<div class="cards">
+<div class="card">🏛️ Κυβέρνηση<b>63%</b><span class="muted">δημοτικότητα</span></div>
+<div class="card">💰 Οικονομία<b>+€2.4B</b><span class="muted">μηνιαίο ισοζύγιο</span></div>
+<div class="card">⚔️ Άμυνα<b>84%</b><span class="muted">ετοιμότητα</span></div>
+<div class="card">🌐 Επιρροή<b>57</b><span class="muted">διεθνής</span></div>
+</div>
+
+<div class="nav">
+<a class="btn" href="#region">🌍 Regional Map</a>
+<a class="btn" href="#country">🇬🇷 Country</a>
+<a class="btn" href="#world">🌐 World Map</a>
+</div>
+
+<div id="region" class="view default">
+<div class="map">
+<div class="land italy">Ιταλία</div><div class="land bulgaria">Βουλγαρία</div>
+<div class="land greece"><a href="#country">🇬🇷<br>ΕΛΛΑΔΑ<br><span style="font-size:10px">ΠΑΤΗΣΕ ΕΔΩ</span></a></div>
+<div class="land turkey">Τουρκία</div>
+<div class="city athens"></div><div class="label" style="left:48%;top:71%">Αθήνα</div>
+<div class="city thess"></div><div class="label" style="left:48%;top:52%">Θεσσαλονίκη</div>
+<div class="city istanbul"></div><div class="label" style="left:63%;top:48%">Κων/πολη</div>
+<div class="city sofia"></div><div class="label" style="left:50%;top:38%">Σόφια</div>
+<div class="city rome"></div><div class="label" style="left:34%;top:45%">Ρώμη</div>
+</div>
+<div class="panel" style="margin-top:10px"><b>Δοκιμή πλοήγησης</b><div class="muted">Πάτησε την Ελλάδα για να ανοίξεις το Country View.</div></div>
+</div>
+
+<div id="country" class="view">
+<div class="panel"><div class="top"><div><div class="muted">COUNTRY VIEW</div><div class="title">🇬🇷 Ελληνική Δημοκρατία</div><div class="muted">Προεδρευόμενη Κοινοβουλευτική Δημοκρατία</div></div><a class="btn" href="#region">← Region</a></div></div>
+<div class="cards">
+<div class="card">👥 Πληθυσμός<b>10.3M</b></div><div class="card">🗣️ Γλώσσα<b>Ελληνικά</b></div><div class="card">☦️ Θρησκεία<b>Ορθοδοξία</b></div><div class="card">🤝 Συμμαχίες<b>ΕΕ · NATO</b></div>
+</div>
+<div class="panel"><div class="title">🏙️ Πόλεις</div><div class="list">
+<div class="row"><b>🏙️ Αθήνα</b><a class="btn" href="#city">Άνοιγμα City View →</a></div>
+<div class="row"><b>🏙️ Θεσσαλονίκη</b><span class="muted">διαθέσιμο στο επόμενο build</span></div>
+<div class="row"><b>⚓ Πειραιάς</b><span class="muted">διαθέσιμο στο επόμενο build</span></div>
+<div class="row"><b>🏙️ Ηράκλειο</b><span class="muted">διαθέσιμο στο επόμενο build</span></div>
+</div></div>
+</div>
+
+<div id="city" class="view">
+<div class="panel"><div class="top"><div><div class="muted">CITY VIEW · ΕΣΩΤΕΡΙΚΟΣ ΚΟΣΜΟΣ</div><div class="title">🏙️ Αθήνα</div><div class="muted">Υποδομές · οικονομία · άμυνα · παιδεία</div></div><a class="btn" href="#country">← Ελλάδα</a></div></div>
+<div class="scene">
+<div class="road"></div>
+<div class="build" style="left:9%;top:23%">🏛️<small>Υπουργεία</small></div>
+<div class="build" style="left:34%;top:16%">🎓<small>Πανεπιστήμιο</small></div>
+<div class="build" style="left:60%;top:27%">⚔️<small>Στρατόπεδο</small></div>
+<div class="build" style="left:76%;top:59%">✈️<small>Αεροδρόμιο</small></div>
+<div class="build" style="left:22%;top:64%">🏭<small>Βιομηχανία</small></div>
+<div class="build" style="left:51%;top:67%">⚓<small>Λιμάνι</small></div>
+</div>
+<div class="panel"><div class="title">🏗️ Κατασκευές</div><div class="list">
+<div class="row"><span>⚔️ Στρατόπεδο</span><a class="btn" href="#build">Κατασκευή · 3h</a></div>
+<div class="row"><span>🎓 Πανεπιστήμιο</span><a class="btn" href="#build">Κατασκευή · 12h</a></div>
+<div class="row"><span>🏭 Βιομηχανία</span><a class="btn" href="#build">Κατασκευή · 8h</a></div>
+<div class="row"><span>✈️ Αεροδρόμιο</span><a class="btn" href="#build">Κατασκευή · 24h</a></div>
+<div class="row"><span>⚓ Λιμάνι</span><a class="btn" href="#build">Κατασκευή · 18h</a></div>
+<div class="row"><span>🛣️ Δρόμος</span><a class="btn" href="#build">Κατασκευή · 4h</a></div>
+</div></div>
+</div>
+
+<div id="build" class="view">
+<div class="panel"><div class="top"><div><div class="muted">CONSTRUCTION QUEUE</div><div class="title">🔨 Εντολή κατασκευής</div></div><a class="btn" href="#city">← Αθήνα</a></div>
+<div class="notice">⏳ <b>Η κατασκευή ξεκίνησε.</b><br>Σε αυτή την έκδοση δοκιμάζουμε την πλοήγηση. Στην επόμενη έκδοση θα προσθέσουμε πραγματικό χρονόμετρο που θα συνεχίζει ακόμη κι αν κλείσεις την εφαρμογή.</div>
+</div></div>
+
+<div id="world" class="view">
+<div class="panel"><div class="top"><div><div class="muted">GLOBAL VIEW</div><div class="title">🌐 World Map</div></div><a class="btn" href="#region">← Region</a></div>
+<p class="muted">Το World View θα ενωθεί με τις περιφερειακές περιοχές στις επόμενες εκδόσεις.</p></div>
+</div>
+
+<div class="nav"><a class="btn" href="#country">🏛️ Κράτος</a><a class="btn" href="#country">💰 Οικονομία</a><a class="btn" href="#country">👥 Κοινωνία</a><a class="btn" href="#country">⚔️ Άμυνα</a><a class="btn" href="#country">🤝 Διπλωματία</a><a class="btn" href="#world">📰 Κόσμος</a></div>
+</div>
+</body></html>
